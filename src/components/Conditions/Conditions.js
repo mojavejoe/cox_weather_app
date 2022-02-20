@@ -1,6 +1,7 @@
 import React from "react";
 
 import classes from "./Conditions.module.css";
+import ConditionsDay from "../ConditionsDay/ConditionsDay";
 
 const Conditions = (props) => {
   let tmp = props.responseObj;
@@ -26,50 +27,8 @@ const Conditions = (props) => {
             <strong>Current conditions in {tmp.city.name}</strong>
           </p>
           <div className={classes.daydiv}>
-            <div className={classes.datediv}>
-              <strong>{new Date(Date.now()).toLocaleDateString()}</strong>
-            </div>
-            <div className={classes.itemdiv}>
-              <div className={classes.labeldiv}>Current Temp</div>
-              <div className={classes.valuediv}>
-                {Math.round(tmp.list[0].temp.day)}F
-              </div>
-            </div>
-            <div className={classes.itemdiv}>
-              <div className={classes.labeldiv}>Feels Like</div>
-              <div className={classes.valuediv}>
-                {Math.round(tmp.list[0].feels_like.day)}F
-              </div>
-            </div>
-            <div className={classes.itemdiv}>
-              <div className={classes.labeldiv}>Low Temp</div>
-              <div className={classes.valuediv}>
-                {Math.round(tmp.list[0].temp.min)}F
-              </div>
-            </div>
-            <div className={classes.itemdiv}>
-              <div className={classes.labeldiv}>High Temp</div>
-              <div className={classes.valuediv}>
-                {Math.round(tmp.list[0].temp.max)}F
-              </div>
-            </div>
-            <div className={classes.itemdiv}>
-              <div className={classes.labeldiv}>Humidity</div>
-              <div className={classes.valuediv}>{tmp.list[0].humidity}%</div>
-            </div>
-            <div className={classes.itemdiv}>
-              <div className={classes.labeldiv}>Overcast %</div>
-              <div className={classes.valuediv}>{tmp.list[0].clouds}%</div>
-            </div>
-            <div className={classes.itemdiv}>
-              <div className={classes.labeldiv}>Weather</div>
-              <div className={classes.valuediv}>
-                {tmp.list[0].weather[0].main}
-              </div>
-            </div>
-            <div className={classes.bottomdiv}></div>
+          <ConditionsDay data={tmp.list[0]} />
           </div>
-
           <br></br>
           <p>
             <strong>------3 day Forecast-------</strong>
@@ -79,54 +38,7 @@ const Conditions = (props) => {
               {forecast_days.map((data) => {
                 return (
                   <div className={classes.daydiv}>
-                    <div className={classes.datediv}>
-                      <strong>
-                        {new Date(
-                          new Date(Date.now()).setDate(
-                            new Date(Date.now()).getDate() + data.index
-                          )
-                        ).toLocaleDateString()}
-                      </strong>
-                    </div>
-                    <div className={classes.itemdiv}>
-                      <div className={classes.labeldiv}>Current Temp</div>
-                      <div className={classes.valuediv}>
-                        {Math.round(data.temp.day)}F
-                      </div>
-                    </div>
-                    <div className={classes.itemdiv}>
-                      <div className={classes.labeldiv}>Feels Like</div>
-                      <div className={classes.valuediv}>
-                        {Math.round(data.feels_like.day)}F
-                      </div>
-                    </div>
-                    <div className={classes.itemdiv}>
-                      <div className={classes.labeldiv}>Low Temp</div>
-                      <div className={classes.valuediv}>
-                        {Math.round(data.temp.min)}F
-                      </div>
-                    </div>
-                    <div className={classes.itemdiv}>
-                      <div className={classes.labeldiv}>High Temp</div>
-                      <div className={classes.valuediv}>
-                        {Math.round(data.temp.max)}F
-                      </div>
-                    </div>
-                    <div className={classes.itemdiv}>
-                      <div className={classes.labeldiv}>Humidity</div>
-                      <div className={classes.valuediv}>{data.humidity}%</div>
-                    </div>
-                    <div className={classes.itemdiv}>
-                      <div className={classes.labeldiv}>Overcast %</div>
-                      <div className={classes.valuediv}>{data.clouds}%</div>
-                    </div>
-                    <div className={classes.itemdiv}>
-                      <div className={classes.labeldiv}>Weather</div>
-                      <div className={classes.valuediv}>
-                        {data.weather[0].main}
-                      </div>
-                    </div>
-                    <div className={classes.bottomdiv}></div>
+                    <ConditionsDay data={data} />
                   </div>
                 );
               })}
