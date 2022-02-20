@@ -74,32 +74,3 @@
     padding-bottom: 20px;
   }
 }
-
-
-.itemdiv{
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  border-bottom: 1px solid gray;
-}
-.labeldiv{
-  width: 80%;
-  display: flex;
-  align-content: flex-start;
-}
-.valuediv{
-  width: 20%;
-  display: flex;
-  align-content: flex-start;
-}
-.datediv {
-  background-color: #fc4c02;
-  border-radius: 10px 10px 0 0;
-  height: 20px;
-}
-
-.bottomdiv {
-  background-color: #fc4c02;
-  border-radius:  0 0 10px 10px;
-  height: 10px;
-}
