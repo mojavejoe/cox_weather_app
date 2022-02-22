@@ -17,9 +17,7 @@ const Conditions = (props) => {
 
   return (
     <div className={classes.Wrapper}>
-      {props.error && (
-        <small className={classes.Small}>Enter a city name or zip code</small>
-      )}
+      {props.error && <div className={classes.searchinputerror}><small className={classes.Small}>Enter a city name or zip code</small></div>}
       {props.loading && <div className={classes.Loader}></div>}
       {tmp && tmp.cod === "200" ? (
         <div className={classes.mainforecastdiv}>
@@ -30,9 +28,9 @@ const Conditions = (props) => {
           <ConditionsDay data={tmp.list[0]} />
           </div>
           <br></br>
-          <p>
+          <div>
             <strong>------3 day Forecast-------</strong>
-          </p>
+          </div>
           <div className={classes.mainforecastdiv}>
             <div className={classes.forecastdiv}>
               {forecast_days.map((data) => {
